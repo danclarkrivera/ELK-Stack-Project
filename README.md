@@ -164,6 +164,6 @@ SSH into the control node and follow the steps below:
 
 ### Helpful Commands
 - Downloading the playbooks from GitHub
-  - ```wget https://github.com/dcrivera123/ELK-Stack-Project/tree/main/ansible/filebeat-playbook.yml```
-  - ```wget https://github.com/dcrivera123/ELK-Stack-Project/tree/main/ansible/install-elk.yml```
-  - ```wget https://github.com/dcrivera123/ELK-Stack-Project/tree/main/ansible/pentest.yml```
+  - ```wget https://github.com/danclarkrivera/ELK-Stack-Project/tree/main/ansible/filebeat-playbook.yml```
+  - ```wget https://github.com/danclarkrivera/ELK-Stack-Project/tree/main/ansible/install-elk.yml```
+  - ```wget https://github.com/danclarkrivera/ELK-Stack-Project/tree/main/ansible/pentest.yml```
