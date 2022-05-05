@@ -7,9 +7,9 @@ The files in this repository were used to configure the network depicted below.
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
 These are the Ansible Playbooks that were utilized to setup and configure the ELK Stack.
-  - ![pentest.yml](ansible/pentest.yml), designed to configure and setup DVWA (Damn Vulnerable Web Application) on a web server
-  - ![install-elk.yml](ansible/install-elk.yml), designed to setup the basic needs for an ELK server using Microsoft Azure Cloud resources
-  - ![filebeat-playbook.yml](ansible/filebeat-playbook.yml), designed to install and setup filebeat and metricbeat onto web VMs
+  - [pentest.yml](ansible/pentest.yml), designed to configure and setup DVWA (Damn Vulnerable Web Application) on a web server
+  - [install-elk.yml](ansible/install-elk.yml), designed to setup the basic needs for an ELK server using Microsoft Azure Cloud resources
+  - [filebeat-playbook.yml](ansible/filebeat-playbook.yml), designed to install and setup filebeat and metricbeat onto web VMs
 
 This document contains the following details:
 - Description of the Topologu
@@ -152,7 +152,7 @@ SSH into the control node and follow the steps below:
 
 ### Q and A
 - Which file is the playbook?
-  - The playbooks are the 3 files found ![here](ansible), visit the *ELK Configuration* section above to review the playbook.
+  - The playbooks are the 3 files found [here](ansible), visit the *ELK Configuration* section above to review the playbook.
 - Where do you copy it?
   - The playbook should be copied to the Ansible Docker container, try ```/etc/ansible/``` as a easy to remember file location.
 - Which file do you update to make Ansible run the playbook on a specific machine?
