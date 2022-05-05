@@ -1,0 +1,68 @@
+#Playbook designed to install and setup filebeat and metricbeat onto web VMs
+- name: Filebeat Installation
+  hosts: webservers
+  become: true
+  tasks:
+      #Uses the command module to download the filebeat.deb file from the web
+    - name: Downloading filebeat .deb
+      command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.4.0-amd64.deb
+
+      #Uses the command module to dpkg the downloaded filebeat.deb file
+    - name: Installing filebeat .deb
+      command: dpkg -i filebeat-7.4.0-amd64.deb
+
+      #Uses the copy command to move a pre-made filebeat configuration file on the ansible container and install it onto the web VM
+    - name: Installing filebeat config
+      copy:
+        src: /etc/ansible/files/filebeat-config.yml
+        dest: /etc/filebeat/filebeat.yml
+
+      #Uses the command module to enable system module for filebeat
+    - name: Configuring filebeat modules
+      command: filebeat modules enable system
+
+      #Uses the command module to setup filebeat
+    - name: Setting up filebeat
+      command: filebeat setup
+
+      #Uses the command module to start filebeat service
+    - name: Starting filebeat
+      command: service filebeat start
+      
+      #Uses the systemd module to launch filebeat at start up
+    - name: filebeat runs at startup
+      systemd:
+        name: filebeat
+        enabled: yes
+
+      #Uses the command module to download the metricbeat.deb file from the web
+    - name: Downloading metricbeat .deb
+      command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.4.0-amd64.deb
+ 
+      #Uses the command module to dpkg the downloaded metricbeat.deb file
+    - name: Installing metricbeat .deb
+      command: dpkg -i metricbeat-7.4.0-amd64.deb
+
+      #Uses the copy command to move a pre-made metricbeat configuration file on the ansible container and install it onto the web VM
+    - name: Installing metricbeat config
+      copy:
+        src: /etc/ansible/files/metricbeat-config.yml
+        dest: /etc/metricbeat/metricbeat.yml
+
+      #Uses the command module to enable docker module for metricbeat
+    - name: Configuring metricbeat mondules
+      command: metricbeat modules enable docker
+
+      #Uses the command module to setup metricbeat
+    - name: Setting up metricbeat
+      command: metricbeat setup
+      
+      #Uses the command module to start metricbeat
+    - name: Start metricbeat service
+      command: service metricbeat start
+
+      #Uses the systemd module to launch metricbeat at start up
+    - name: metricbeat runs at startup
+      systemd:
+        name: metricbeat
+        enabled: yes
