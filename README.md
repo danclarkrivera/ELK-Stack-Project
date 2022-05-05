@@ -15,8 +15,8 @@ This document contains the following details:
 - Description of the Topologu
 - Access Policies
 - ELK Configuration
-  - Beats in Use
-  - Machines Being Monitored
+- Beats in Use
+- Machines Being Monitored
 - How to Use the Ansible Build
 
 
@@ -147,7 +147,7 @@ SSH into the control node and follow the steps below:
   
 - Note that the Playbook 2 - install_elk.yml configures only the server(s) listed as [elk] in /etc/ansible/hosts
 - Similarly Playbook 3 - filebeat-playbook.yml configures the servers listed as [webservers] in /etc/ansible/hosts
-- Navigate to Kibana to verify working status by viewing Log data from filebeat and Metric data from Metricbeat in the Kibana dashboard
+- Navigate to Kibana to verify working status by viewing Log data from Filebeat and Metric data from Metricbeat in the Kibana dashboard
 - Kibana can be accessed at http://52.229.225.90:5601/app/kibana
 
 ### Q and A
