@@ -44,7 +44,7 @@ The configuration details of each machine may be found below.
 
 ### Access Policies
 
-The machines on the internal network are not exposed to the public Internet. 
+The machines on the internal network are not exposed to the public Internet. As an measure of security the Web servers and ELK server can only be accessed using a public key from the Ansible Docker container. This will block any ssh traffic that does not match that key. 
 
 Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - 198.54.107.182
