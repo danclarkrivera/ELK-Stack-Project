@@ -1,0 +1,49 @@
+#Playbook designed to setup the basic needs for an ELK server using Microsoft Azure Cloud resources
+- name: Elk Installation
+  hosts: elk
+  remote_user: azadmin
+  become: True
+  tasks:
+      #Uses command module to set the Max Map Count
+    - name: Set Max Map count
+      command: sysctl -w vm.max_map_count=262144
+      
+      #Uses sysctl module to update the Max Map Count
+    - name: Use more memory
+      sysctl:
+        name: vm.max_map_count
+        value: 262144
+        state: present
+        reload: yes
+
+      #Uses the apt module to install docker.io
+    - name: Install docker.io
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        name: docker.io
+        state: present
+            
+      #Uses the apt module to install pip3
+    - name: Install pip3
+      apt:
+        name: python3-pip
+        state: present
+
+      #Uses the pip module to install the docker Python module
+    - name: Install Docker Python module
+      pip:
+        name: docker
+        state: present
+
+      #Uses the docker_container module to Download and Launch the sebp/elk:761 image to create an ELK container
+    - name: Download and Launch a Docker ELK Container
+      docker_container:
+        name: elk
+        image: sebp/elk:761
+        state: started
+        restart_policy: always
+        published_ports:
+          - 5601:5601
+          - 9200:9200
+          - 5044:5044
