@@ -137,7 +137,7 @@ SSH into the control node and follow the steps below:
 - Update the Ansible configuration file ```/etc/ansible/ansible.cfg``` and set the remote_user parameter to the admin user of the Web server
 
 ### Running the Playbook
-- Start an ssh session with the Jump Box ```~$ ssh sysadmin@<Jump Box Public IP>```
+- Start an ssh session with the Jump Box ```~$ ssh azadmin@<Jump Box Public IP>```
 - Start the Ansible Docker container ```~$ sudo docker start <Ansible Container>```
 - Attach to the Ansible Docker container ```~$ sudo docker attach <Ansible Container>```
 - Run the playbooks with the following commands:
@@ -156,7 +156,7 @@ SSH into the control node and follow the steps below:
 - Where do you copy it?
   - The playbook should be copied to the Ansible Docker container, try ```/etc/ansible/``` as a easy to remember file location.
 - Which file do you update to make Ansible run the playbook on a specific machine?
-  - The ```/etc/ansible/hosts``` file, visit the *Using the Playbook* section above for an example what the adjustments need.
+  - The ```/etc/ansible/hosts``` file, visit the *Using the Playbook* section above for an example of the adjustments need.
 - How do I specify which machine to install the ELK server on versus which to install Filebeat on?
   - The ```/etc/ansible/hosts``` file is configured to use two separate groups. One named 'webservers' and the other named 'elk' using this in conjunction with the ```install-elk.yml``` playbook's ```hosts: elk``` line indicates that only the IP addresses under the 'elk' section should run this playbook.
 - Which URL do you navigate to in order to check that the ELK server is running?
