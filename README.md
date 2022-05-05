@@ -137,9 +137,9 @@ SSH into the control node and follow the steps below:
 - Update the Ansible configuration file ```/etc/ansible/ansible.cfg``` and set the remote_user parameter to the admin user of the Web server
 
 ### Running the Playbook
-- Start an ssh session with the Jump Box ```~$ ssh azadmin@<Jump Box Public IP>```
-- Start the Ansible Docker container ```~$ sudo docker start <Ansible Container>```
-- Attach to the Ansible Docker container ```~$ sudo docker attach <Ansible Container>```
+- Start an ssh session to Jump-Box-Provisioner ```~$ ssh azadmin@20.211.153.242```
+- Start the Ansible Docker container "charming_engelbart" ```~$ sudo docker start charming_engelbart```
+- Attach to the Ansible Docker container "charming_engelbart"```~$ sudo docker attach charming_engelbart```
 - Run the playbooks with the following commands:
   - ```ansible-playbook /etc/ansible/pentest.yml```
   - ```ansible-playbook /etc/ansible/install-elk.yml```
